@@ -1,0 +1,55 @@
+.App {
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 20px;
+}
+
+.task-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input {
+  padding: 10px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+/* App.css */
+
+/* App.css ya TaskList.css me add karo */
+.dark-mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #666;
+}
