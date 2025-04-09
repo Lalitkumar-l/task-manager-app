@@ -13,10 +13,11 @@ const TaskList = () => {
   const total = tasks.length;
   const completed = tasks.filter(task => task.completed).length;
 
-  // 🔄 Fetch tasks from backend
+  const BASE_URL = 'https://task-manager-app-zycz.onrender.com';
+
   const fetchTasks = async () => {
     try {
-      const res = await axios.get('/api/tasks');
+      const res = await axios.get(`${BASE_URL}/api/tasks`);
       setTasks(res.data);
     } catch (error) {
       console.error('Fetch Error:', error);
@@ -27,7 +28,6 @@ const TaskList = () => {
     fetchTasks();
   }, []);
 
-  // ➕ Add task to backend
   const addTask = async (e) => {
     e.preventDefault();
     if (!taskInput.trim()) return;
@@ -39,7 +39,7 @@ const TaskList = () => {
     };
 
     try {
-      const res = await axios.post('/api/tasks', newTask);
+      const res = await axios.post(`${BASE_URL}/api/tasks`, newTask);
       setTasks([...tasks, res.data]);
       setTaskInput('');
     } catch (error) {
@@ -47,46 +47,41 @@ const TaskList = () => {
     }
   };
 
-  // ✅ Toggle Complete
   const toggleComplete = async (id, completed) => {
     try {
-      await axios.put(`/api/tasks/${id}`, { completed: !completed });
+      await axios.put(`${BASE_URL}/api/tasks/${id}`, { completed: !completed });
       fetchTasks();
     } catch (error) {
       console.error('Toggle Error:', error);
     }
   };
 
-  // 🗑 Delete Task
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`/api/tasks/${id}`);
+      await axios.delete(`${BASE_URL}/api/tasks/${id}`);
       fetchTasks();
     } catch (error) {
       console.error('Delete Error:', error);
     }
   };
 
-  // 🧹 Clear All Tasks
   const clearAllTasks = async () => {
     try {
-      await axios.delete('/api/tasks');
+      await axios.delete(`${BASE_URL}/api/tasks`);
       fetchTasks();
     } catch (error) {
       console.error('Clear All Error:', error);
     }
   };
 
-  // ✏️ Start Edit
   const startEdit = (id, text) => {
     setEditTaskId(id);
     setEditText(text);
   };
 
-  // 💾 Save Edit
   const saveEdit = async () => {
     try {
-      await axios.put(`/api/tasks/${editTaskId}`, { text: editText });
+      await axios.put(`${BASE_URL}/api/tasks/${editTaskId}`, { text: editText });
       setEditTaskId(null);
       setEditText('');
       fetchTasks();
@@ -95,7 +90,6 @@ const TaskList = () => {
     }
   };
 
-  // 🌙 Toggle Dark Mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.body.classList.toggle('dark-mode');
@@ -120,7 +114,6 @@ const TaskList = () => {
         <button type="submit">Add Task</button>
       </form>
 
-      {/* 🔘 Clear All Button */}
       <button onClick={clearAllTasks} className="clear-btn">
         Clear All Tasks
       </button>
