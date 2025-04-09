@@ -13,7 +13,7 @@ const TaskList = () => {
   const total = tasks.length;
   const completed = tasks.filter(task => task.completed).length;
 
-  const BASE_URL = 'https://task-manager-app-zycz.onrender.com';
+  const BASE_URL = 'process.env.REACT_APP_API_BASE_URL';
 
   const fetchTasks = async () => {
     try {
