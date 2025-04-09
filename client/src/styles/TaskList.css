@@ -88,3 +88,24 @@
 .clear-btn:hover {
   background-color: #c82333;
 }
+@media (max-width: 768px) {
+  .task-container {
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+
+  .task-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-icons {
+    margin-top: 8px;
+  }
+
+  .task-icons svg {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+}
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { FaTrash, FaCheck, FaEdit } from 'react-icons/fa';
 import '../styles/TaskList.css';
@@ -13,20 +13,20 @@ const TaskList = () => {
   const total = tasks.length;
   const completed = tasks.filter(task => task.completed).length;
 
-  const BASE_URL = 'process.env.REACT_APP_API_BASE_URL';
+  const BASE_URL = process.env.REACT_APP_API_BASE_URL; // ✅ remove quotes around process.env
 
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       const res = await axios.get(`${BASE_URL}/api/tasks`);
       setTasks(res.data);
     } catch (error) {
       console.error('Fetch Error:', error);
     }
-  };
+  }, [BASE_URL]);
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [fetchTasks]);
 
   const addTask = async (e) => {
     e.preventDefault();
