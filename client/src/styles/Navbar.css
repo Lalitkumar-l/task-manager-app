@@ -38,7 +38,7 @@
 }
 
 /* Responsive */
-@media (max-width: 368px) {
+@media (max-width: 168px) {
   .hamburger {
     display: block;
   }

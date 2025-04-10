@@ -1,5 +1,5 @@
 .task-container {
-  max-width: 700px;
+  max-width: 600px;
   margin: auto;
   padding: 1rem;
 }
@@ -88,7 +88,7 @@
 .clear-btn:hover {
   background-color: #c82333;
 }
-@media (max-width: 368px) {
+@media (max-width: 168px) {
   .task-container {
     padding: 0.5rem;
     max-width: 100%;
