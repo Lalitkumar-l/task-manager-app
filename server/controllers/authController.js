@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
-const SECRET_KEY = process.env.JWT_SECRET;
+const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key"; // backup key in case env not set
 
 const loginUser = async (req, res) => {
   try {
@@ -67,7 +67,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// ✅ Clean export
 module.exports = {
   loginUser,
   registerUser,
